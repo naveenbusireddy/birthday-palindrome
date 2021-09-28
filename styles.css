@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+:root {
+    --primary-color: #93C5FD;
+}
+
+.navigation {
+    background-color: var(--primary-color);
+    padding: 1rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    /* max-width: 1000px; */
+    margin: auto;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+    margin: 4rem auto;
+    text-align: center;
+}
+
+.heading {
+    color: var(--primary-color);
+}
+
+.description {
+    font-size: large;
+    margin: 1rem;
+}
+
+label {
+    display: block;
+    font-size: large;
+    font-weight: 500;
+}
+
+input {
+    font-size: 14px;
+    /* outline: #fff; */
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 1rem 1.5rem 1rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 0.5rem;
+    width: 100%;
+    max-width: 260px;
+}
+
+#submit-button {
+    background: var(--primary-color);
+    border: none;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: large;
+    cursor: pointer;
+    outline: #fff;
+    margin: auto;
+    display: block;
+}
+
+#error-message {
+    display: block;
+    font-size: larger;
+    margin: 1rem 0;
+}
+
+.change-table {
+    width: 50%;
+    text-align: justify;
+    border-collapse: collapse;
+    margin: auto;
+}
+
+.change-table caption {
+    margin: 1rem auto;
+    font-size: large;
+    font-weight: 500;
+}
+
+th,
+td {
+    border: 2px solid var(--primary-color);
+    width: 0%;
+    border-collapse: collapse;
+    padding: 0.4rem;
+}
+
+.list-non-bullet {
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+.list-item-inline {
+    display: inline;
+    padding: 0rem 0.5rem;
+}
+
+
+.footer {
+    background-color: var(--primary-color);
+    padding: 1rem;
+    text-align: center;
+    color: black;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    /* max-width: 1000px; */
+    margin: auto;
+}
+
+.footer-about {
+    font-size: 2rem;
+}
+
+.footer-header {
+    font-size: 1.5rem;
+    padding-inline-start: 0px;
+}
