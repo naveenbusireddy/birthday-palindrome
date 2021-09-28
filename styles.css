@@ -58,7 +58,7 @@ input {
     max-width: 260px;
 }
 
-#submit-button {
+#check-button {
     background: var(--primary-color);
     border: none;
     color: #fff;
