@@ -16,7 +16,9 @@ function reverseStr(str) {
 }
 
 function convertDateToStr(date) {
+
     var dateStr = {day: '', month:'', year:''};
+    
     if(date.day<10) {
         dateStr.day = '0'+date.day;
     } 
@@ -107,7 +109,7 @@ function getNextDate(date) {
         day: day,
         month: month,
         year: year
-    }
+    };
 }
 
 function getNextPalindromeDate(date) {
@@ -116,9 +118,9 @@ function getNextPalindromeDate(date) {
 
     while(1) {
         ctr++;
-        var checkPalindrome = checkPalindromeForAllDateFormats(nextDate);
+        var isPalindrome = checkPalindromeForAllDateFormats(nextDate);
         
-        if(checkPalindrome) {
+        if(isPalindrome) {
             break;
         }
         nextDate = getNextDate(nextDate);
@@ -126,10 +128,28 @@ function getNextPalindromeDate(date) {
     return [ctr, nextDate];
 }
 
-var date = {
-    day: 8,
-    month: 8,
-    year: 2021
+function clickHandler(e) {
+    var birthdayStr = birthdayDate.value;
+
+    if(birthdayStr !== '') {
+        var listOfDate = birthdayStr.split('-');
+        var date = {
+            day: Number(listOfDate[2]),
+            month: Number(listOfDate[1]),
+            year: Number(listOfDate[0])
+        };
+
+        var isPalindrome = checkPalindromeForAllDateFormats(date);
+        if(isPalindrome) {
+            showMessage.innerText = 'yay, your Birthday is a Palindrome';
+        }
+        else {
+            var [ctr, nextDate] = getNextPalindromeDate(date);
+            
+            showMessage.innerText = `The next palindrome date is ${nextDate.day}-${nextDate.month}-${nextDate.year}, you missed it by ${ctr} days!`;
+        }        
+    }
 }
 
-console.log(getNextPalindromeDate(date));
+checkPalindrome.addEventListener("click", clickHandler);
+
