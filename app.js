@@ -3,7 +3,7 @@ var checkPalindrome = document.querySelector("#check-button");
 var showMessage = document.querySelector("#output");
 
 
-function checkPalindrome(str) {
+function isPalindrome(str) {
     var reverse = reverseStr(str);
     return str === reverse;
 }
@@ -51,10 +51,85 @@ function checkPalindromeForAllDateFormats(date) {
     var palindrome = false;
     
     for(var i=0; i<listOfDateFormats.length; i++) {
-        if(palindrome(listOfPalindromes[i])) {
+        if(isPalindrome(listOfDateFormats[i])) {
             palindrome = true;
             break;
         }
     }
     return palindrome;
 }
+
+function isLeapYear(year) {
+    if(year % 400 === 0) {
+        return true;
+    }
+    if(year % 100 === 0) {
+        return false;
+    }
+    if(year % 4 === 0) {
+        return true;
+    }
+    return false;
+}
+
+function getNextDate(date) {
+    var day = date.day + 1;
+    var month = date.month;
+    var year = date.year;
+
+    var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    if(month === 2) {
+        if(isLeapYear(year)) {
+            if(day > 29) {
+                day = 1;
+                month++
+            }
+        }
+        else {
+            if(day > 28) {
+                day = 1;
+                month++
+            }
+        }
+    }
+    else {
+        if( day > daysInMonth[month-1]) {
+            day = 1;
+            month++;
+        }
+    }
+    if(month > 12) {
+        month = 1;
+        year++;
+    }
+    return {
+        day: day,
+        month: month,
+        year: year
+    }
+}
+
+function getNextPalindromeDate(date) {
+    var ctr = 0;
+    var nextDate = getNextDate(date);
+
+    while(1) {
+        ctr++;
+        var checkPalindrome = checkPalindromeForAllDateFormats(nextDate);
+        
+        if(checkPalindrome) {
+            break;
+        }
+        nextDate = getNextDate(nextDate);
+    }
+    return [ctr, nextDate];
+}
+
+var date = {
+    day: 8,
+    month: 8,
+    year: 2021
+}
+
+console.log(getNextPalindromeDate(date));
